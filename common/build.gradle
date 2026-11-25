@@ -1,0 +1,27 @@
+plugins {
+    id 'net.neoforged.moddev'
+}
+
+neoForge {
+    neoFormVersion = rootProject.neo_form_version
+}
+
+dependencies {
+    compileOnly 'org.spongepowered:mixin:0.8.7'
+    compileOnly 'io.github.llamalad7:mixinextras-common:0.5.5'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+sourceSets {
+    test {
+        compileClasspath += sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.runtimeClasspath + sourceSets.test.output + sourceSets.main.output
+    }
+}
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+    jvmArgs('-Dfile.encoding=UTF-8')
+}

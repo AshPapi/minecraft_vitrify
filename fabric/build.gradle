@@ -1,0 +1,39 @@
+plugins {
+    id 'net.fabricmc.fabric-loom'
+}
+
+base {
+    archivesName = "vitrify-fabric-${minecraft_version}"
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    compileOnly "maven.modrinth:modmenu:${project.modmenu_version}"
+    compileOnly project(':common')
+}
+
+tasks.named('compileJava', JavaCompile) {
+    source(project(':common').sourceSets.main.allJava)
+}
+
+tasks.named('processResources', ProcessResources) {
+    from(project(':common').sourceSets.main.resources)
+
+    var props = [
+            minecraft_version     : project.minecraft_version,
+            fabric_loader_version : project.fabric_loader_version,
+            mod_id                : project.mod_id,
+            mod_name              : project.mod_name,
+            mod_license           : project.mod_license,
+            mod_version           : project.mod_version,
+            mod_authors           : project.mod_authors,
+            mod_description       : project.mod_description
+    ]
+    inputs.properties props
+
+    filesMatching('fabric.mod.json') {
+        expand props
+    }
+}

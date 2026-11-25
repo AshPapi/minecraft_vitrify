@@ -1,0 +1,35 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "ashpapi.vitrify.client.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MixinGuiGraphicsExtractor",
+    "MixinGuiRenderer",
+    "MixinGuiEntityRenderState",
+    "MixinPictureInPictureRenderer",
+    "MixinHud",
+    "MixinMouseHandler",
+    "MixinScreen",
+    "MixinAbstractContainerScreen",
+    "MixinCreativeModeInventoryScreen",
+    "MixinRecipeBookComponent",
+    "MixinRecipeBookTabButton",
+    "MixinRecipeButton",
+    "MixinOverlayRecipeComponent",
+    "MixinAbstractWidget",
+    "MixinAbstractButton",
+    "MixinImageButton",
+    "MixinCycleButton",
+    "MixinAbstractSliderButton",
+    "MixinCheckbox",
+    "MixinEditBox",
+    "MixinAbstractSelectionList",
+    "MixinAbstractScrollArea",
+    "MixinTooltipRenderUtil",
+    "MixinChatScreen"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
